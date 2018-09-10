@@ -11,7 +11,7 @@ Written in Javascript using the [Expo](https://expo.io/) React Native toolchain
 ## Features
 
 - Hone your focus according to the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique)
-- Notifications to singnal a new activity
+- Notifications to signal a new activity
 - Customize activities and timer durations according to your needs
 - Works in the background
 
