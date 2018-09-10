@@ -52,10 +52,16 @@ const styles = StyleSheet.create({
   },
   itemText: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 20,
+  },
+  itemActivityText: {
+    fontWeight: 'bold',
+    color: 'white',
+    fontSize: 22,
   },
   itemTextSub: {
-    fontSize: 14,
+    fontWeight: 'normal',
+    fontSize: 18,
     color: '#ccc',
   },
   orderButton: {
@@ -217,7 +223,7 @@ class SettingsScreen extends React.Component {
                 onPress={() => this.showActivityModal(activity, index)}
               >
                 <View>
-                  <Text style={styles.itemText}>
+                  <Text style={styles.itemActivityText}>
                     {`${activity.name}`}
                     {'\n'}
                     <Text style={styles.itemTextSub}>
