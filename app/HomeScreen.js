@@ -475,6 +475,7 @@ export default createStackNavigator({
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'bold',
+      fontSize: 24,
     },
   },
   transitionConfig: () => fromLeft(),

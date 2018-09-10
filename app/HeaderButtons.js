@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons' // eslint-disable-line
 
 // define IconComponent, color, sizes and OverflowIcon in one place
 const MaterialHeaderButton = props => (
-  <HeaderButton {...props} IconComponent={Ionicons} iconSize={23} color="white" />
+  <HeaderButton {...props} IconComponent={Ionicons} iconSize={32} color="white" />
 )
 
 const MaterialHeaderButtons = props => (
