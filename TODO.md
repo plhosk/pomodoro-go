@@ -1,3 +1,4 @@
 # To Do
 
-- Support iOS
+- Verify it works on iOS
+- Product landing page
