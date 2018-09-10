@@ -7,23 +7,13 @@ import {
 import { LinearGradient, Notifications } from 'expo'
 import { createStackNavigator } from 'react-navigation'
 import { Ionicons } from '@expo/vector-icons' // eslint-disable-line
-// import BackgroundTimer from 'react-native-background-timer'
-// import PushNotification from 'react-native-push-notification'
 import { fromLeft } from 'react-navigation-transitions'
 
 import formatTime from '../core/formatTime'
 
 import { MaterialHeaderButtons, Item } from './HeaderButtons'
 import SettingsScreen from './SettingsScreen'
-// import Notification from './Notification'
-
-// PushNotification.configure({
-//   // onNotification: (notification) => {
-//   //   console.log('NOTIFICATION:', notification)
-//   // },
-//   onNotification: () => {},
-//   popInitialNotification: false,
-// })
+import AboutScreen from './AboutScreen'
 
 const styles = StyleSheet.create({
   container: {
@@ -109,59 +99,6 @@ class HomeScreen extends React.Component {
     }
   }
 
-  // componentDidUpdate() { // prevProps
-  //   const {
-  //     running,
-  //   } = this.props // currentValue,
-  //   if (running && !this.intervalId) {
-  //     this.resetTimer()
-  //   }
-  //   if (!running && this.intervalId) {
-  //     this.clearTimer()
-  //   }
-  //   // if (
-  //   //   zeroAlert
-  //   //   // currentValue !== prevProps.currentValue
-  //   //   // || activities[currentActivityIndex].name !== prevProps.activities[prevProps.currentActivityIndex].name
-  //   //   // || zeroAlert
-  //   // ) {
-  //   //   this.updateNotification({
-  //   //     id: '740893710',
-  //   //     tag: '740893710',
-  //   //     // title: activities[currentActivityIndex].name,
-  //   //     // title: `Activity complete: ${activities[currentActivityIndex].name}`,
-  //   //     message: `Activity completed: ${activities[currentActivityIndex].name}`,
-  //   //     title: 'Pomodoro Go',
-  //   //     // message: `Duration: ${formatTime(currentValue)}`,
-  //   //     // message: formatTime(currentValue),
-  //   //     // actions: '["Cancel", "OK"]',
-  //   //     playSound: notificationSound,
-  //   //     vibrate: notificationVibrate,
-  //   //     // playSound: false,
-  //   //     // vibrate: false,
-  //   //     // autoCancel: zeroAlert,
-  //   //     // visibility: 'public',
-  //   //     // ongoing: !zeroAlert,
-  //   //     // visibility: 'private',
-  //   //     // priority: 'high',
-  //   //     // importance: 'high',
-  //   //     // ongoing: !zeroAlert,
-  //   //     // priority: 'min',
-  //   //     // importance: 'none',
-  //   //     // ongoing: true,
-  //   //   })
-  //   //   if (zeroAlert) {
-  //   //     dispatch({ type: 'TIMER_ZERO_ALERT', payload: false })
-  //   //   }
-  //   // }
-  // }
-
-  // updateNotification = (options) => {
-  //   PushNotification.localNotification({
-  //     ...options,
-  //   })
-  // }
-
   clearTimer = () => {
     if (this.intervalId) {
       clearInterval(this.intervalId)
@@ -200,10 +137,6 @@ class HomeScreen extends React.Component {
               activityIndex: adjustedCurrentActivityIndex,
             },
           })
-          // console.log(`timewarp ${offset} seconds. value: ${adjustedCurrentValue}. \
-          // activityIndex: ${adjustedCurrentActivityIndex}`)
-        } else {
-          // console.log('no timewarp')
         }
       }
       if (adjustedCurrentValue === 0) {
@@ -251,7 +184,6 @@ class HomeScreen extends React.Component {
 
     let newValue = 0
     let newActivityIndex = 0
-    // let remainingDuration = cycleDuration
     for (let i = 0; i < activities.length; i += 1) {
       if (newPosition <= activities[i].duration) {
         newActivityIndex = i
@@ -261,7 +193,6 @@ class HomeScreen extends React.Component {
       newPosition -= activities[i].duration + 1
     }
 
-    // console.log({ newValue, newActivityIndex })
     // value will be decremented right away. add 1
     newValue += 1
     return { newValue, newActivityIndex }
@@ -275,6 +206,9 @@ class HomeScreen extends React.Component {
       android: {
         channelId: 'activity-completion-alerts',
         icon: '../assets/icon.png',
+      },
+      ios: {
+        sound: true,
       },
     }
   }
@@ -325,6 +259,7 @@ class HomeScreen extends React.Component {
     } = this.props
     await Notifications.cancelAllScheduledNotificationsAsync()
     if (running) {
+      // console.log('sep')
       if (!autoAdvance) {
         const time = (new Date()).getTime()
           + ((activities[currentActivityIndex].duration - currentValue + 1) * 1000)
@@ -336,10 +271,10 @@ class HomeScreen extends React.Component {
         )
       } else {
         const promises = []
-        // const cycleDuration = activities
-        //   .map(activity => activity.duration)
-        //   .reduce((acc, cur) => acc + cur)
-        //   + activities.length
+        const cycleDuration = activities
+          .map(activity => activity.duration)
+          .reduce((acc, cur) => acc + cur)
+          + activities.length
         let shifted = [...activities]
         shifted = shifted.concat(shifted.splice(0, currentActivityIndex))
         for (let i = 0; i < shifted.length; i += 1) {
@@ -353,14 +288,19 @@ class HomeScreen extends React.Component {
           }
           let notifIndex = i - currentActivityIndex
           if (notifIndex < 0) notifIndex += shifted.length
-          promises.push(Notifications.scheduleLocalNotificationAsync(
-            this.generateActivityCompletedNotificationObject(notifIndex),
-            {
-              time: time + 1000,
+          // set to 1 when intervalMs bug is fixed and uncomment the intervalMs line below
+          const INTERVAL_MS_WORKAROUND_CYCLES = 4
+          for (let cycleNumber = 0; cycleNumber < INTERVAL_MS_WORKAROUND_CYCLES; cycleNumber += 1) {
+            const notifTime = time + (cycleNumber * cycleDuration * 1000) + 1000
+            const schedulingOptions = {
+              time: notifTime,
               // intervalMs: cycleDuration * 1000,
-            },
-          ))
-          // console.log(i, diff, shifted, time)
+            }
+            // console.log(notifIndex, Math.round((notifTime - (new Date()).getTime()) / 1000))
+            promises.push(Notifications.scheduleLocalNotificationAsync(
+              this.generateActivityCompletedNotificationObject(notifIndex), schedulingOptions,
+            ))
+          }
         }
         await Promise.all(promises)
       }
@@ -373,7 +313,6 @@ class HomeScreen extends React.Component {
     } = this.props
     return (
       <View style={styles.container}>
-        {/* <Notification /> */}
         <LinearGradient
           style={styles.centeredContainer}
           colors={['#375e97', '#34675c']}
@@ -467,6 +406,7 @@ const HomeScreenConnected = connect(mapStateToProps)(HomeScreen)
 export default createStackNavigator({
   Home: HomeScreenConnected,
   Settings: SettingsScreen,
+  About: AboutScreen,
 }, {
   navigationOptions: {
     headerStyle: {

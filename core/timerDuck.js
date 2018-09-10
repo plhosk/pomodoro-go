@@ -117,7 +117,6 @@ const reducer = (state = defaults, action) => {
       // payload.duration
       const activities = [...state.activities]
       let { currentValue } = state
-      // const { currentActivityIndex, running } = state
 
       // prevent duplicate names
       let newName = action.payload.name
@@ -131,11 +130,7 @@ const reducer = (state = defaults, action) => {
         newName = `${newName} (${num})`
       }
 
-      // activities[action.payload.index].name = newName
-      // activities[action.payload.index].duration = action.payload.duration
       activities[action.payload.index] = { name: newName, duration: action.payload.duration }
-      // activities[action.payload.index].duration = action.payload.duration
-      // if ((running && currentActivityIndex === action.payload.index)
       if (currentValue > activities[state.currentActivityIndex].duration) {
         currentValue = activities[state.currentActivityIndex].duration
       }
@@ -152,10 +147,6 @@ const reducer = (state = defaults, action) => {
       const activity2 = { ...state.activities[action.payload.index2] }
       const activities = [...state.activities]
       let { currentActivityIndex, currentValue } = state
-      // activities[action.payload.index1].name = state.activities[action.payload.index2].name
-      // activities[action.payload.index2].name = state.activities[action.payload.index1].name
-      // activities[action.payload.index1].duration = state.activities[action.payload.index2].duration
-      // activities[action.payload.index2].duration = state.activities[action.payload.index1].duration
       activities[action.payload.index1] = activity2
       activities[action.payload.index2] = activity1
       if (currentActivityIndex === action.payload.index1 || currentActivityIndex === action.payload.index2) {

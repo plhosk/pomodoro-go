@@ -84,6 +84,11 @@ class SettingsScreen extends React.Component {
     activityModalIndex: 0,
   }
 
+  componentDidMount() {
+    const { navigation } = this.props
+    navigation.setParams({ openAbout: this.openAbout })
+  }
+
   showActivityModal = (activity, index) => {
     this.setState({
       activityModalVisible: true,
@@ -189,9 +194,14 @@ class SettingsScreen extends React.Component {
     )
   }
 
+  openAbout = () => {
+    const { navigation } = this.props
+    navigation.navigate('About')
+  }
+
   render() {
     const {
-      activities, autoStart, autoAdvance,
+      activities, autoStart, autoAdvance, navigation,
     } = this.props
     const {
       activityModalVisible, activityModalName, activityModalHours, activityModalMinutes, activityModalSeconds,
@@ -314,6 +324,26 @@ class SettingsScreen extends React.Component {
             </View>
           </View>
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={navigation.getParam('openAbout')}
+        >
+          <View style={styles.activityContainer}>
+            <View style={styles.item}>
+              <Text style={styles.itemText}>
+                About Pomodoro Go
+              </Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View style={styles.activityContainer}>
+            <View style={styles.item}>
+              <Text style={styles.itemText}>
+                &nbsp;
+              </Text>
+            </View>
+          </View>
+        </TouchableOpacity>
       </ScrollView>
     )
   }
@@ -324,6 +354,7 @@ SettingsScreen.propTypes = {
   activities: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   autoStart: PropTypes.bool.isRequired,
   autoAdvance: PropTypes.bool.isRequired,
+  navigation: PropTypes.shape({}).isRequired,
 }
 
 const mapStateToProps = state => ({

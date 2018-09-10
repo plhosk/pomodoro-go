@@ -10,10 +10,9 @@ const MaterialHeaderButton = props => (
 const MaterialHeaderButtons = props => (
   <HeaderButtons
     HeaderButtonComponent={MaterialHeaderButton}
-    // OverflowIcon={<Ionicons icon="more-vert" size={23} color="white" />}
+    // OverflowIcon={<Ionicons icon="more-vert" size={32} color="white" />}
     {...props}
   />
 )
-// const { Item } = HeaderButtons.Item // eslint-disable-line prefer-destructuring
 
 export { MaterialHeaderButtons, Item }

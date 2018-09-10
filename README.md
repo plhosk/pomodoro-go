@@ -12,9 +12,9 @@ Written in Javascript using the [Expo](https://expo.io/) React Native toolchain
 
 ## Features
 
-- Hone your focus according to the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique)
-- Notifications to signal a new activity
-- Customize activities and timer durations according to your needs
+- Hone your focus and concentration according to the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique)
+- Notifications signal a new activity
+- Customize activities according to your needs
 - Works in the background
 
 ## Usage
@@ -22,4 +22,4 @@ Written in Javascript using the [Expo](https://expo.io/) React Native toolchain
 - The Pomodoro Technique divides time between 25 minute work intervals and 5 minute breaks.
 - Press play to start a countdown timer.
 - When the activity is complete a notification appears.
-- Edit activities in the settings page.
+- Customize the name and duration of activities in the settings page.

@@ -6,10 +6,6 @@ import {
 
 const styles = StyleSheet.create({
   modal: {
-    // flex: 0.7,
-    // // width: '80%',
-    // flexDirection: 'column',
-    // alignItems: 'flex-start',
     justifyContent: 'flex-start',
     // backgroundColor: '#375e97',
     backgroundColor: '#406fb3',
@@ -19,7 +15,6 @@ const styles = StyleSheet.create({
     margin: 0,
   },
   buttons: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'center',
@@ -47,7 +42,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   durationContainer: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },
@@ -56,19 +50,14 @@ const styles = StyleSheet.create({
   },
   durationContainerStyle: {
     padding: 8,
-    // width: 88,
-    // flex: 1,
-    // flexDirection: 'column',
   },
   inputName: {
-    // height: 40,
     fontSize: 20,
     padding: 10,
     color: 'white',
     borderColor: '#aaa',
   },
   inputNumber: {
-    // height: 40,
     fontSize: 20,
     padding: 10,
     color: 'white',
