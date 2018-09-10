@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "Pomodoro Go",
+    "description": "Productivity timer",
+    "slug": "pomodoro-go",
+    "privacy": "public",
+    "sdkVersion": "29.0.0",
+    "platforms": ["android"],
+    "version": "1.0.0",
+    "orientation": "default",
+    "primaryColor": "#375e97",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "backgroundColor": "#375e97"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}
