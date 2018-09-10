@@ -59,8 +59,8 @@ const styles = StyleSheet.create({
     color: '#ccc',
   },
   orderButton: {
-    paddingLeft: 8,
-    paddingRight: 8,
+    paddingLeft: 12,
+    paddingRight: 12,
   },
 })
 
@@ -232,7 +232,7 @@ class SettingsScreen extends React.Component {
                 onPress={() => this.swapActivities(index, index - 1)}
               >
                 <Text>
-                  <Ionicons name="md-arrow-up" size={32} color="white" />
+                  <Ionicons name="md-arrow-up" size={40} color="white" />
                 </Text>
               </TouchableOpacity>
             </View>
@@ -241,7 +241,7 @@ class SettingsScreen extends React.Component {
                 onPress={() => this.swapActivities(index, index + 1)}
               >
                 <Text>
-                  <Ionicons name="md-arrow-down" size={32} color="white" />
+                  <Ionicons name="md-arrow-down" size={40} color="white" />
                 </Text>
               </TouchableOpacity>
             </View>
@@ -250,7 +250,7 @@ class SettingsScreen extends React.Component {
                 onPress={() => this.deleteActivity(index)}
               >
                 <Text>
-                  <Ionicons name="md-trash" size={32} color="white" />
+                  <Ionicons name="md-trash" size={40} color="white" />
                 </Text>
               </TouchableOpacity>
             </View>
