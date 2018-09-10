@@ -20,4 +20,4 @@ Written in Javascript using the [Expo](https://expo.io/) React Native toolchain
 - The Pomodoro Technique divides time between 25 minute work intervals and 5 minute breaks.
 - Press play to start a countdown timer.
 - When the activity is complete a notification appears.
-- Edit activities in the settings page
+- Edit activities in the settings page.

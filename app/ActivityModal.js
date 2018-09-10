@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
     // flexDirection: 'column',
     // alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    backgroundColor: '#375e97',
+    // backgroundColor: '#375e97',
+    backgroundColor: '#406fb3',
     padding: 10,
     flex: 2,
     width: '100%',
@@ -46,6 +47,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   durationContainer: {
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },
@@ -53,9 +55,10 @@ const styles = StyleSheet.create({
     margin: 8,
   },
   durationContainerStyle: {
-    width: 88,
-    flex: 1,
-    flexDirection: 'column',
+    padding: 8,
+    // width: 88,
+    // flex: 1,
+    // flexDirection: 'column',
   },
   inputName: {
     // height: 40,

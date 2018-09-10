@@ -9,6 +9,7 @@ import { createStackNavigator } from 'react-navigation'
 import { Ionicons } from '@expo/vector-icons' // eslint-disable-line
 // import BackgroundTimer from 'react-native-background-timer'
 // import PushNotification from 'react-native-push-notification'
+import { fromLeft } from 'react-navigation-transitions'
 
 import formatTime from '../core/formatTime'
 
@@ -476,4 +477,5 @@ export default createStackNavigator({
       fontWeight: 'bold',
     },
   },
+  transitionConfig: () => fromLeft(),
 })
