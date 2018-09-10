@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Pomodoro Go",
-    "description": "Productivity timer",
+    "description": "Productivity timer app for Android. Hone your focus according to the Pomodoro Technique",
     "slug": "pomodoro-go",
     "privacy": "public",
     "sdkVersion": "29.0.0",
