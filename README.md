@@ -8,6 +8,9 @@ Written in Javascript using the [Expo](https://expo.io/) React Native toolchain
 
 <img src="https://raw.githubusercontent.com/plhosk/pomodoro-go/master/assets/screenshot.png" height="500" alt="Screenshot" />
 
+- Try Pomodoro Go on your Android device with Expo: [exp://exp.host/@plhosk/pomodoro-go](exp://exp.host/@plhosk/pomodoro-go)
+- Can't open that link? Download the [Expo App for Android](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en)
+
 ## Features
 
 - Hone your focus according to the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique)

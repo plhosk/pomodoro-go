@@ -20,7 +20,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.plhosk.pomodorogo"
+    },
+    "android": {
+      "package": "com.plhosk.pomodorogo"
     }
   }
 }
